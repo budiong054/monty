@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -24,9 +25,13 @@ typedef struct stack_s
 
 /* global variable */
 extern stack_t *top;
+extern int n;
 
 /* stack operations */
 int isempty(void);
 int pall(void);
+
+/* exec function */
+void exec_opcode(stack_t **stack, char *lineptr, unsigned int line_number);
 
 #endif /* MONTY_H */
