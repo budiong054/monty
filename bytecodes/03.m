@@ -1,5 +1,6 @@
 push 1
-push uuy
+push 2
 push 3
 pall
-pa
+swap
+pall
