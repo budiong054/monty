@@ -11,9 +11,9 @@
 
 int main(int argc, char *argv[])
 {
-	stack_t *stack = NULL; /* pointer to the top of the stack */
-	char *filename; /* pointer to the filename */
-	FILE *stream;	/* pointer to the file stream */
+	stack_t *stack = NULL; 
+	char *filename; 
+	FILE *stream;	
 	char *lineptr = NULL;
 	size_t n = 0;
 	unsigned int line_number = 0;

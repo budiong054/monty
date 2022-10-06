@@ -10,28 +10,28 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_stack; /* declare a new element to be push to the stack */
+	stack_t *new_stack; 
 
-	new_stack = malloc(sizeof(stack_t)); /* allocate memory space for it */
+	new_stack = malloc(sizeof(stack_t)); 
 
-	/* check if the memory allocation was successful or not */
+
 	if (new_stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
-	/* check whether the user inputed an integer value or not */
+	
 	if (!num)
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	new_stack->n = num; /* assign the n part to the integer */
-	new_stack->prev = NULL; /* set the previous to NULL */
-	new_stack->next = (*stack); /* set the new element to the top */
-	*stack = new_stack; /* assign address of new element to top ptr */
+	new_stack->n = num; 
+	new_stack->prev = NULL; 
+	new_stack->next = (*stack); 
+	*stack = new_stack;
 }
 
 
@@ -46,19 +46,19 @@ void push(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *temp; /* declare a temporary pointer */
+	stack_t *temp; 
 
-	temp = *stack; /* assign the address of the top pointer */
+	temp = *stack; 
 
-	/* check if the stack if empty */
+	
 	if (isempty(*stack))
 		return;
 
-	/* Traverse through the stack from top to bottom */
+	
 	while (temp)
 	{
-		printf("%d\n", temp->n); /* print the value */
-		temp = temp->next; /* move to the next element on the stack */
+		printf("%d\n", temp->n); 
+		temp = temp->next; 
 	}
 }
 
@@ -74,13 +74,12 @@ void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-	/* check if the stack is empty or not */
 	if (isempty(*stack))
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n); /* print the value at the top */
+	printf("%d\n", (*stack)->n); 
 }
 
 
@@ -94,22 +93,22 @@ void pint(stack_t **stack, unsigned int line_number)
 
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp; /* declare a temporary pointer */
+	stack_t *temp; 
 
-	/* check if the stack is empty or not */
+
 	if (isempty(*stack))
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	/* delete the top element from the stack */
+	
 	temp = *stack;
 	num = temp->n;
 	*stack = temp->next;
 	if (temp->next)
 		(*stack)->prev = temp->prev;
-	free(temp); /* free the memory allocated for the element */
+	free(temp); 
 }
 
 /**
